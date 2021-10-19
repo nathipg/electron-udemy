@@ -19,6 +19,8 @@ function createWindow () {
     },
     // show: false,
     backgroundColor: '#2B2E3B',
+    frame: false,
+    titleBarStyle: 'hidden',
   })
 
   secondaryWindow = new BrowserWindow({
@@ -41,13 +43,13 @@ function createWindow () {
   secondaryWindow.loadFile('secondary.html')
   // mainWindow.loadURL('https://google.com')
 
-  setTimeout(() => {
-    secondaryWindow.show();
-    setTimeout(() => {
-      secondaryWindow.close()
-      secondaryWindow = null
-    }, 3000)
-  }, 2000)
+  // setTimeout(() => {
+  //   secondaryWindow.show();
+  //   setTimeout(() => {
+  //     secondaryWindow.close()
+  //     secondaryWindow = null
+  //   }, 3000)
+  // }, 2000)
 
   // Open DevTools - Remove for PRODUCTION!
   // mainWindow.webContents.openDevTools();
