@@ -31,8 +31,29 @@ function createWindow () {
   })
 }
 
+app.on('before-quit', e => {
+  console.log('Prevent app from quitting');
+  e.preventDefault();
+})
+
+app.on('browser-window-blur', e => {
+  console.log('App unfocused')
+  setTimeout(app.quit, 3000)
+})
+
+app.on('browser-window-focus', e => {
+  console.log('App focused')
+})
+
 // Electron `app` is ready
-app.on('ready', createWindow)
+app.on('ready', () => {
+  console.log('Checking ready: ' + app.isReady());
+  console.log(app.getPath('desktop'));
+  console.log(app.getPath('music'));
+  console.log(app.getPath('temp'));
+  console.log(app.getPath('userData'));
+  createWindow()
+})
 
 // Quit when all windows are closed - (Not macOS - Darwin)
 app.on('window-all-closed', () => {
